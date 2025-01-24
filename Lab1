@@ -1,0 +1,125 @@
+> EPI_data <- read.csv(“<path>/epi_2024_results_DAF24.csv”) 
+Error: unexpected invalid token in "EPI_data <- read.csv(“"
+> EPI_data <- read.csv(“<C:\Users\Thomas\Dropbox\My PC (DESKTOP-2A9JECI)\Downloads>/epi2024results06022024.csv”)
+Error: unexpected invalid token in "EPI_data <- read.csv(“"
+> library(readr)
+> epi2024results06022024 <- read_csv("C:/Users/Thomas/Dropbox/My PC (DESKTOP-2A9JECI)/Downloads/epi2024results06022024.csv")
+Rows: 180 Columns: 149                                                  
+── Column specification ────────────────────────────────────────────────
+Delimiter: ","
+chr   (2): iso, country
+dbl (147): code, EPI.old, EPI.new, ECO.old, ECO.new, BDH.old, BDH.ne...
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+> View(epi2024results06022024)
+> library(readr)
+> > epi2024results06022024 <- read_csv("C:/Users/Thomas/Dropbox/My PC (DESKTOP-2A9JECI)/Downloads/epi2024results06022024.csv")
+Error: unexpected '>' in ">"
+> EPI_data <- read_csv("C:/Users/Thomas/Dropbox/My PC (DESKTOP-2A9JECI)/Downloads/epi2024results06022024.csv")
+Rows: 180 Columns: 149                                                                         
+── Column specification ───────────────────────────────────────────────────────────────────────
+Delimiter: ","
+chr   (2): iso, country
+dbl (147): code, EPI.old, EPI.new, ECO.old, ECO.new, BDH.old, BDH.new, MKP.old, MKP.new, MH...
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+> View(EPI_data)
+> 
+> attach(EPI_data)
+> EPI.new # prints out values EPI_data$EPI.new
+  [1] 30.7 52.1 41.9 39.7 55.5 46.8 44.7 63.0 69.0 40.4 56.0 35.9 27.8 53.1 58.1 66.7 47.4 37.4
+ [19] 43.3 44.9 45.6 49.0 53.0 48.5 56.3 41.5 33.0 37.9 31.0 38.1 61.1 38.3 35.2 50.0 35.5 49.4
+ [37] 37.9 55.5 42.5 62.6 52.3 54.0 65.6 39.0 67.9 32.2 49.2 47.6 51.2 43.8 41.5 41.6 28.6 75.3
+ [55] 38.5 35.8 45.8 73.7 67.1 53.1 37.1 46.9 74.6 36.6 67.4 46.0 32.6 36.2 41.6 48.6 36.2 40.2
+ [73] 60.1 64.3 27.6 33.8 41.6 30.4 65.7 48.1 60.5 48.5 61.7 47.5 47.5 36.9 44.1 44.9 42.2 26.1
+ [91] 59.9 40.1 36.6 34.1 63.9 75.0 29.9 34.9 41.2 38.1 33.9 66.6 42.6 34.2 47.3 44.7 40.6 45.6
+[109] 37.0 47.6 39.7 38.6 26.9 43.8 32.9 67.2 57.7 47.4 39.2 37.5 50.0 70.0 51.9 25.5 52.9 36.5
+[127] 39.0 46.6 32.0 64.4 62.2 47.2 41.2 57.2 46.5 33.4 51.0 54.1 46.8 35.9 42.6 43.3 49.3 48.2
+[145] 39.7 53.8 65.0 62.5 41.8 42.9 51.0 64.2 38.7 38.6 56.6 70.5 68.0 50.3 31.9 43.1 45.4 49.7
+[163] 35.2 40.2 52.1 45.7 37.6 40.7 35.4 54.6 52.0 72.7 57.3 43.9 42.9 44.6 53.1 24.5 46.1 51.7
+> NAs <- is.na(EPI.new) # records True values if the value is NA 
+> EPI.new.noNAs <- EPI.new[!NAs] # filters out NA values, new array 
+> summary(EPI.new) # stats 
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  24.50   38.25   45.50   46.84   53.10   75.30 
+> > fivenum(EPI.new,na.rm=TRUE) 
+Error: unexpected '>' in ">"
+> fivenum(EPI.new,na.rm=TRUE) 
+[1] 24.5 38.2 45.5 53.1 75.3
+> stem(EPI.new) # stem and leaf plot 
+
+  The decimal point is 1 digit(s) to the right of the |
+
+  2 | 
+  2 | 5667889
+  3 | 001122233334444
+  3 | 5555666666777777788888889999999
+  4 | 0000000111122222222333333334444
+  4 | 5555556666667777777778888889999999
+  5 | 000011122222233333444
+  5 | 5666677788
+  6 | 0011223334444
+  6 | 56677777889
+  7 | 0134
+  7 | 555
+
+> hist(EPI.new) 
+> hist(EPI.new, seq(20., 80., 1.0), prob=TRUE) 
+> lines(density(EPI.new,na.rm=TRUE,bw=1.)) # or try bw=“SJ” 
+> lines(density(EPI.new,na.rm=TRUE,bw="SJ".)) # or try bw=“SJ” 
+Error: unexpected symbol in "lines(density(EPI.new,na.rm=TRUE,bw="SJ"."
+> lines(density(EPI.new,na.rm=TRUE,bw=SJ.)) # or try bw=“SJ” 
+Error: object 'SJ.' not found
+> > lines(density(EPI.new,na.rm=TRUE,bw="SJ")) 
+Error: unexpected '>' in ">"
+> lines(density(EPI.new,na.rm=TRUE,bw="SJ"))
+> rug(EPI.new)
+> boxplot(EPI.new, APO.new) 
+> hist(EPI.new, seq(20., 80., 1.0), prob=TRUE)
+> 
+> hist(EPI.new, seq(20., 80., 1.0), prob=TRUE)
+> 
+> 
+> hist(EPI.new, seq(20., 80., 1.0), prob=TRUE)
+> 
+> rug(EPI.new) 
+> 
+> hist(EPI.new, seq(20., 80., 1.0), prob=TRUE)
+> 
+> lines (density(EPI.new,na.rm=TRUE,bw=“SJ”)) 
+Error: unexpected invalid token in "lines (density(EPI.new,na.rm=TRUE,bw=“"
+> lines(density(EPI.new,na.rm=TRUE,bw=“SJ”))
+Error: unexpected invalid token in "lines(density(EPI.new,na.rm=TRUE,bw=“"
+> lines (density(EPI.new,na.rm=TR UE,bw=1.))
+Error: unexpected symbol in "lines (density(EPI.new,na.rm=TR UE"
+> lines(density(EPI.new,na.rm=TR UE,bw=1.))
+Error: unexpected symbol in "lines(density(EPI.new,na.rm=TR UE"
+> lines(density(EPI.new,na.rm=TRUE,bw=1.)) 
+> lines(density(EPI.new,na.rm=TRUE,bw="SJ"))
+> rug(EPI.new) 
+> 
+> x<-seq(20,80,1) 
+> 
+> x<-seq(20,80,1) 
+> 
+> q<- dnorm(x,mean=42, sd=5,log=FALSE) 
+> 
+> lines(x,q)
+> lines(x,.4*q)
+> q<-dnorm(x,mean=65, sd=5,log=FALSE)
+> lines(x,.12*q) 
+> plot(ecdf(EPI.new), do.points=FALSE, verticals=TRUE) 
+> 
+> plot(ecdf(EPI.new), do.points=FALSE, verticals=TRUE) 
+> 
+> qqnorm(EPI.new); qqline(EPI.new) 
+> 
+> qqplot(rnorm(250), EPI.new, xlab = "Q-Q plot for norm dsn")
+> 
+> qqline(EPI.new)
+> 
+> qqplot(rt(250, df = 5), EPI.new, xlab = "Q-Q plot for t dsn")
+> 
+> qqline(EPI.new)
